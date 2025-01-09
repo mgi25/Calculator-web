@@ -1,0 +1,113 @@
+<!--- NAME : Alrn JIn Shibu
+    REG NO : 23112001
+    -DATE : 8-1-2025 -->
+<!-- CREATE AN HTML , CSS , JS for a calculator -->
+
+
+
+<html>
+    <head>
+        <title>Calculator</title>
+        <style>
+            table {
+                border: 1px solid rgb(255, 255, 255);
+                padding: 5px;
+                background-color: black;
+            }
+            td {
+                border: 1px solid black;
+                padding: 5px;
+                background-color: rgb(79, 18, 18);
+                font-size: small;
+                font-style:italic;
+                color: antiquewhite;
+            }
+            #screen {
+                height: 40px;
+                background-color: rgb(40, 34, 34);
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <tr>
+              
+                    <td colspan="4" id="screen"></td>
+        
+            </tr>
+            <tr>
+                <td onclick="ClickHandler('0')">0</td>
+                <td onclick="ClickHandler('1')">1</td>
+                <td onclick="ClickHandler('2')">2</td>
+                <td onclick="ClickHandler('3')">3</td>
+            </tr>
+            <tr>
+                <td onclick="ClickHandler('4')">4</td>
+                <td onclick="ClickHandler('5')">5</td>
+                <td onclick="ClickHandler('6')">6</td>
+                <td onclick="ClickHandler('7')">7</td>
+            </tr>
+            <tr>
+                <td onclick="ClickHandler('8')">8</td>
+                <td onclick="ClickHandler('9')">9</td>
+                <td onclick="ClickHandler('+')">+</td>
+                <td onclick="ClickHandler('-')">-</td>
+            </tr>
+            <tr>
+                <td onclick="ClickHandler('*')">*</td>
+                <td onclick="ClickHandler('/')">/</td>
+                <td onclick="Clickevaluate()">=</td>
+                <td onclick="Clear()">C</td>
+            </tr>
+        </table>
+        <script>
+            console.log("hello World")
+            
+            function ClickHandler(value) {
+                console.log("Button Clicked" +value)
+
+                if(value == '+' || value == '-' || value == '/'){
+                    value = " "+value+" ";
+                }
+        
+                
+                var screenContent = document.getElementById("screen");
+                screenContent.innerHTML = screenContent.innerHTML + value;
+
+
+            }
+            
+            function Clickevaluate(){
+                console.log("Evaluate clicked");
+                var expresion = document.getElementById("screen").innerHTML;
+                console.log("Expresion"+expresion)
+
+                var expressionArray = expresion.split(" ");
+                console.log("Expression Array: "+expressionArray);
+
+
+                var result = 0;
+                if(expressionArray[1] == '+'){
+                    result = parseInt(expressionArray[0]) + parseInt(expressionArray[2]);
+                }
+                if(expressionArray[1] == '-'){
+                    result = parseInt(expressionArray[0]) - parseInt(expressionArray[2]);
+                }
+                if(expressionArray[1] == '/'){
+                    result = parseInt(expressionArray[0]) / parseInt(expressionArray[2])
+                }
+
+                document.getElementById("screen").innerHTML = result;
+            }
+            function Clear(value){
+                console.log("Clear Clicked")
+                var ScreenContent = document.getElementById("screen");
+                ScreenContent.innerHTML = '';
+                
+
+
+            }
+
+        </script>
+    </body>
+</html>
